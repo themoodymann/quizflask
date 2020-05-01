@@ -1,0 +1,13 @@
+<html>
+  <head>
+   <title>Quizmaster</title>
+   <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+   <link rel="icon" href="./static/favicon.ico" type="image/x-icon">
+  </head>
+  <frameset id="cntfrm" rows="8, 4, 5">
+        <frame src="upper?key={playerkey}">
+        <frame src="middle?key={playerkey}">
+        <frame src="lower" scrolling="auto">
+  </frameset>
+</html>
+

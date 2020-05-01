@@ -1,0 +1,12 @@
+<html>
+  <head>
+   <title>Quizmaster</title>
+   <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+   <link rel="icon" href="./static/favicon.ico" type="image/x-icon">
+  </head>
+  <frameset id="cntfrm" rows="100, 100">
+      <frame src="whoiswinner" scrolling="auto">
+      <frame src="lower" scrolling="auto">
+  </frameset>
+</html>
+

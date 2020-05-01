@@ -1,0 +1,18 @@
+<html>
+  <head>
+   <title></title>
+   <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+  </head>
+  <body>
+  <H2>Hey {playername}!</H2>
+
+  <table style=margin-left:auto;margin-right:auto>
+  <tr><div><a href="/upper?key={playerkey}&action=1" class="button"><span>1</span></a></div></tr>
+  <tr><div><a href="/upper?key={playerkey}&action=2" class="button"><span>2</span></a></div></tr>
+  <tr><div><a href="/upper?key={playerkey}&action=3" class="button"><span>3</span></a></div></tr>
+  <tr><div><a href="/upper?key={playerkey}&action=4" class="button"><span>4</span></a></div></tr>
+  </table>
+
+</body>
+</html>
+
