@@ -9,11 +9,11 @@ import shelve
 import os
 import psutil
 #import pytesseract
-#from time import sleep
+from time import sleep
 
 '''************************************************************ Global Variables *****************************'''
 Delta = 5 # how many points winner should be ahead, can be set with ?restart=Delta
-RemainingSecondsDelta = 20 # how much more can the slowest dude think?
+RemainingSecondsDelta = 25 # how much more can the slowest dude think?
 GameWithTime = False # points = players + 1, players, players-2, etc.
 QuizProgramName = 'Bluestacks.exe' # to check whether quiz is already running
 QuizStartLocation = '"C:\Program Files\BlueStacks\HD-RunApp.exe"' # path and name of quiz game
@@ -106,6 +106,7 @@ def getAutoAnswer(click):
     r = region[click]
     x = r[0] + int(0.9 * region[0][2])
     y = r[1] + int(0.5 * region[1][3])
+    sleep(2)
     result = pyautogui.screenshot(region=allanswers)
     originalgreens = testColor(result)
     beforeclick = time.time()
