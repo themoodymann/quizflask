@@ -355,18 +355,14 @@ def lowerframe():
         p = players[key]
         temp.append([key, p.points])
     temp.sort(key=lambda v: -v[1])
-    result += "</table><table style=margin-left:auto;margin-right:auto>"
     for x in temp:
         p = players[x[0]]
-        result += "<tr>"
         if p.winner:
-            text = "<font color=\"green\">" + p.name + " " + str(p.points) + "</font>"
+            result += "<H2><font color=\"green\">" + p.name + " " + str(p.points) + "</font></H2>"
         elif p.straggler:
-            text = "<font color=\"red\">" + p.name + " " + str(p.points) + "</font>"
+            result += "<H2><font color=\"red\">" + p.name + " " + str(p.points) + "</font></H2>"
         else:
-            text = p.name + " " + str(p.points)
-        result += "<th><H2>" + text + "</H2></th>"
-        result += "</tr>"
+            result += "<H2>"+p.name + " " + str(p.points)+"</H2>"
     result += "</body></html>"
     return result
 
