@@ -13,7 +13,7 @@ from time import sleep
 
 '''************************************************************ Global Variables *****************************'''
 Delta = 5 # how many points winner should be ahead, can be set with ?restart=Delta
-RemainingSecondsDelta = 25 # how much more can the slowest dude think?
+RemainingSecondsDelta = 20 # how much more can the slowest dude think?
 GameWithTime = False # points = players + 1, players, players-2, etc.
 QuizProgramName = 'Bluestacks.exe' # to check whether quiz is already running
 QuizStartLocation = '"C:\Program Files\BlueStacks\HD-RunApp.exe"' # path and name of quiz game
@@ -178,16 +178,23 @@ def updatePoints(correct):
         players[k].answertime = 0
 
 def evalGame():
-    global players, revealing
-    revealing = True
-    clicking = []
-    for k in players:
-        if players[k].answer != 0:
-            clicking.append(players[k].answer)
-    most = max(set(clicking), key=clicking.count)
-    correct = getAutoAnswer(most)
-    updatePoints(correct)
-    revealing = False
+    global players, revealing, lock
+    x = lock.acquire(False)
+    #print("lock free = ",x)
+    if x:
+        try:
+            revealing = True
+            clicking = []
+            for k in players:
+                if players[k].answer != 0:
+                    clicking.append(players[k].answer)
+            most = max(set(clicking), key=clicking.count)
+            correct = getAutoAnswer(most)
+            updatePoints(correct)
+            revealing = False
+        finally:
+            lock.release()
+
 
 def errorPage(errormsg):
     result = "<html><head><title>Quizmaster</title>"
