@@ -3,9 +3,22 @@
    <title></title>
    <link rel="stylesheet" type="text/css" href="./static/css/main.css">
   </head>
+  <script type="text/javascript">
+    var myWidth = 0, myHeight = 0;
+    if( typeof( window.innerWidth ) == 'number' ) {
+        myWidth = window.innerWidth; myHeight = window.innerHeight;
+    } else if( document.documentElement && ( document.documentElement.clientWidth ||document.documentElement.clientHeight ) ) {
+        myWidth = document.documentElement.clientWidth; myHeight = document.documentElement.clientHeight;
+    } else if( document.body && ( document.body.clientWidth || document.body.clientHeight ) ) {
+        myWidth = document.body.clientWidth; myHeight = document.body.clientHeight;
+    }
+  </script>
   <body>
-  <H2>Hey {playername}!</H2>
-
+  <H2>Hey {playername}!
+      <script type="text/javascript">
+        document.write(' Your resolution is ' + myWidth + ' x ' + myHeight + '');
+      </script>
+      </H2>
   <table style=margin-left:auto;margin-right:auto>
   <tr><div><a href="/upper?key={playerkey}&action=1" class="button"><span>1</span></a></div></tr>
   <tr><div><a href="/upper?key={playerkey}&action=2" class="button"><span>2</span></a></div></tr>
