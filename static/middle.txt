@@ -5,13 +5,11 @@
    <link rel="stylesheet" type="text/css" href="./static/css/main.css">
   </head>
   <body>
-  <H1>{remainingseconds}</H1>
-
-  <H1><div><span>{w}</span></a></div></H1>
-  <H1><div><span>{w}</span></a></div></H1>
-  <H1><div><span>{w}</span></a></div></H1>
-  <H1><div><span>{w}</span></a></div></H1>
-
+  <H2>{remainingseconds}</H2>
+  <H2><div><span>{w}</span></a></div></H2>
+  <H2><div><span>{w}</span></a></div></H2>
+  <H2><div><span>{w}</span></a></div></H2>
+  <H2><div><span>{w}</span></a></div></H2>
 
 </body>
 </html>

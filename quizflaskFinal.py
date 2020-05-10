@@ -9,7 +9,7 @@ import shelve
 import os
 import psutil
 #import pytesseract
-#from time import sleep
+from time import sleep
 
 '''************************************************************ Global Variables *****************************'''
 Delta = 5 # how many points winner should be ahead, can be set with ?restart=Delta
@@ -106,6 +106,7 @@ def getAutoAnswer(click):
     r = region[click]
     x = r[0] + int(0.9 * region[0][2])
     y = r[1] + int(0.5 * region[1][3])
+    sleep(2)
     result = pyautogui.screenshot(region=allanswers)
     originalgreens = testColor(result)
     beforeclick = time.time()
@@ -177,16 +178,23 @@ def updatePoints(correct):
         players[k].answertime = 0
 
 def evalGame():
-    global players, revealing
-    revealing = True
-    clicking = []
-    for k in players:
-        if players[k].answer != 0:
-            clicking.append(players[k].answer)
-    most = max(set(clicking), key=clicking.count)
-    correct = getAutoAnswer(most)
-    updatePoints(correct)
-    revealing = False
+    global players, revealing, lock
+    x = lock.acquire(False)
+    #print("lock free = ",x)
+    if x:
+        try:
+            revealing = True
+            clicking = []
+            for k in players:
+                if players[k].answer != 0:
+                    clicking.append(players[k].answer)
+            most = max(set(clicking), key=clicking.count)
+            correct = getAutoAnswer(most)
+            updatePoints(correct)
+            revealing = False
+        finally:
+            lock.release()
+
 
 def errorPage(errormsg):
     result = "<html><head><title>Quizmaster</title>"
@@ -347,18 +355,14 @@ def lowerframe():
         p = players[key]
         temp.append([key, p.points])
     temp.sort(key=lambda v: -v[1])
-    result += "</table><table style=margin-left:auto;margin-right:auto>"
     for x in temp:
         p = players[x[0]]
-        result += "<tr>"
         if p.winner:
-            text = "<font color=\"green\">" + p.name + " " + str(p.points) + "</font>"
+            result += "<H2><font color=\"green\">" + p.name + " " + str(p.points) + "</font></H2>"
         elif p.straggler:
-            text = "<font color=\"red\">" + p.name + " " + str(p.points) + "</font>"
+            result += "<H2><font color=\"red\">" + p.name + " " + str(p.points) + "</font></H2>"
         else:
-            text = p.name + " " + str(p.points)
-        result += "<th><H2>" + text + "</H2></th>"
-        result += "</tr>"
+            result += "<H2>"+p.name + " " + str(p.points)+"</H2>"
     result += "</body></html>"
     return result
 
