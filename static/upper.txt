@@ -15,9 +15,9 @@
   </script>
   <body>
   <H2>Hey {playername}!
-      <script type="text/javascript">
+      <!--script type="text/javascript">
         document.write(' Your resolution is ' + myWidth + ' x ' + myHeight + '');
-      </script>
+      </script-->
       </H2>
   <table style=margin-left:auto;margin-right:auto>
   <tr><div><a href="/upper?key={playerkey}&action=1" class="button"><span>1</span></a></div></tr>
