@@ -4,5 +4,5 @@
   <link rel="stylesheet" type="text/css" href="./static/css/main.css">
   </head>
   <body>
-  <H2>Ranking (win with &Delta; =
+  <H2 class="orig_h2">Ranking (win with &Delta; =
 
