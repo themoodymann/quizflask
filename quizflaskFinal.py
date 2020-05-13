@@ -119,6 +119,7 @@ def getAutoAnswer(click):
     print("screen scanning time = ",time.time()-beforeclick)
     for result in resultseries:
         greenseries.append(testColor(result))
+    maxgreenshift = -1
     correct = -1
     for g in greenseries:
         shifts = [a_i - b_i for a_i, b_i in zip(g, originalgreens)]
