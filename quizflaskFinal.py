@@ -17,7 +17,6 @@ RemainingSecondsDelta = 20 # how much more can the slowest dude think?
 GameWithTime = False # points = players + 1, players, players-2, etc.
 QuizProgramName = 'Bluestacks.exe' # to check whether quiz is already running
 QuizStartLocation = '"C:\Program Files\BlueStacks\HD-RunApp.exe"' # path and name of quiz game
-ScreenScanNumber = 6 # how often to scan the screen when looking for correct result (this does not work on mac)
 ScreenScanNumber = 20 # how often to scan the screen when looking for correct result (this does not work on mac)
 '''************************************************************ Webpage Calls *****************************
 join game with servername:5000/?name=yourname
