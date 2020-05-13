@@ -1,8 +1,0 @@
-<html>
-  <head>
-  <meta http-equiv="refresh" content="5">
-  <link rel="stylesheet" type="text/css" href="./static/css/main.css">
-  </head>
-  <body>
-  <H2>Ranking (win with &Delta; =
-

@@ -18,6 +18,7 @@ GameWithTime = False # points = players + 1, players, players-2, etc.
 QuizProgramName = 'Bluestacks.exe' # to check whether quiz is already running
 QuizStartLocation = '"C:\Program Files\BlueStacks\HD-RunApp.exe"' # path and name of quiz game
 ScreenScanNumber = 6 # how often to scan the screen when looking for correct result (this does not work on mac)
+ScreenScanNumber = 20 # how often to scan the screen when looking for correct result (this does not work on mac)
 '''************************************************************ Webpage Calls *****************************
 join game with servername:5000/?name=yourname
 change settings: .../setvar?delta=5 or timelimit=20 or withtime=True or remove=somename or restart=1
@@ -119,7 +120,7 @@ def getAutoAnswer(click):
     print("screen scanning time = ",time.time()-beforeclick)
     for result in resultseries:
         greenseries.append(testColor(result))
-    maxgreenshift = 0
+    correct = -1
     for g in greenseries:
         shifts = [a_i - b_i for a_i, b_i in zip(g, originalgreens)]
         currentmax = max(shifts)
@@ -127,6 +128,8 @@ def getAutoAnswer(click):
             maxgreenshift = currentmax
             #print(maxgreenshift)
             correct = shifts.index(currentmax)
+    if correct == -1:
+        print("error:", shifts)
     print("correct (1..4) = ",correct+1)
     return correct+1
     #text.append(correct)

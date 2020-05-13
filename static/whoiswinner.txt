@@ -6,8 +6,6 @@
   <body>
   <H2>We have a winner!</H2>
 
-  <H1><div><span>{winnername}</span></a></div></H1>
-    <H1><div><span>{winnername}</span></a></div></H1>
 <H1><div><span>{winnername}</span></a></div></H1>
 
 <div><a href="/setvar?restart=1" class="button"><span>Restart?</span></a></div>
