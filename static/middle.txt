@@ -6,11 +6,10 @@
   </head>
   <body>
   <H2 class="orig_h2">{remainingseconds}</H2>
-  <H2 class="orig_h2><div><span>{w}</span></a></div></H2>
-  <H2 class="orig_h2><div><span>{w}</span></a></div></H2>
-  <H2 class="orig_h2><div><span>{w}</span></a></div></H2>
-  <H2 class="orig_h2><div><span>{w}</span></a></div></H2>
-
+  <H2 class="orig_h2"><div><span>{w}</span></a></div></H2>
+  <H2 class="orig_h2"><div><span>{w}</span></a></div></H2>
+  <H2 class="orig_h2"><div><span>{w}</span></a></div></H2>
+  <H2 class="orig_h2"><div><span>{w}</span></a></div></H2>
 </body>
 </html>
 

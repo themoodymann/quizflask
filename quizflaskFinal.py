@@ -17,7 +17,7 @@ RemainingSecondsDelta = 20 # how much more can the slowest dude think?
 GameWithTime = False # points = players + 1, players, players-2, etc.
 QuizProgramName = 'Bluestacks.exe' # to check whether quiz is already running
 QuizStartLocation = '"C:\Program Files\BlueStacks\HD-RunApp.exe"' # path and name of quiz game
-ScreenScanNumber = 20 # how often to scan the screen when looking for correct result (this does not work on mac)
+ScreenScanTime = 1.0 # how long to scan the screen when looking for correct result (this does not work on mac)
 '''************************************************************ Webpage Calls *****************************
 join game with servername:5000/?name=yourname
 change settings: .../setvar?delta=5 or timelimit=20 or withtime=True or remove=somename or restart=1
@@ -112,7 +112,8 @@ def getAutoAnswer(click):
     beforeclick = time.time()
     pyautogui.click(x=x, y=y)
     resultseries=[]
-    for x in range(ScreenScanNumber):
+    #for x in range(ScreenScanNumber):
+    while time.time() < beforeclick + ScreenScanTime:
         #print(time.time())
         resultseries.append(pyautogui.screenshot(region=allanswers))
     greenseries=[]
@@ -121,12 +122,14 @@ def getAutoAnswer(click):
         greenseries.append(testColor(result))
     maxgreenshift = -1
     correct = -1
+    #test = 0
     for g in greenseries:
+        #test += 1
         shifts = [a_i - b_i for a_i, b_i in zip(g, originalgreens)]
         currentmax = max(shifts)
         if currentmax > maxgreenshift:
             maxgreenshift = currentmax
-            #print(maxgreenshift)
+            #print(test,maxgreenshift)
             correct = shifts.index(currentmax)
     if correct == -1:
         print("error:", shifts)
@@ -137,9 +140,6 @@ def getAutoAnswer(click):
     #text.append(color)
     #db[text[0]] = text
     #sleep(randrange(5, 20))
-
-
-
 
 def updatePoints(correct):
     global players, winnername, winner, whoGuessedThis, timeLimit
