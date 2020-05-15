@@ -2,7 +2,7 @@
   <head>
    <title></title>
    <meta http-equiv="refresh" content="2">
-   <link rel="stylesheet" type="text/css" href="./static/css/main.css">
+   <link rel="stylesheet" type="text/css" href="./static/css/plain.css">
   </head>
   <body>
   <H2 class="orig_h2">{remainingseconds}</H2>
