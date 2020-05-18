@@ -262,11 +262,14 @@ def mainframe():
                 mykey = k
         # register a new player
         if not found:
-            mykey = random.randint(1000000000,10000000000)
-            me = Player(name,mykey)
-            players[mykey] = me
-            if GameWithTime:
-                Delta = 5*len(players)
+            if name == "":
+                return (errorPage("Error: you need to register with name=YourName"))
+            else:
+                mykey = random.randint(1000000000,10000000000)
+                me = Player(name,mykey)
+                players[mykey] = me
+                if GameWithTime:
+                    Delta = 5*len(players)
     # we now know that mykey is valid!
     f = open("static/main.txt")
     data = f.read()
