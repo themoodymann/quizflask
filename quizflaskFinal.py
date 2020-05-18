@@ -371,5 +371,5 @@ def lowerframe():
 
 if __name__ == "__main__":
     startGameUp()
-    app.run('0.0.0.0', use_reloader=False)
+    app.run('0.0.0.0', use_reloader=False, threaded=True)
     #app.run(use_reloader=False)
